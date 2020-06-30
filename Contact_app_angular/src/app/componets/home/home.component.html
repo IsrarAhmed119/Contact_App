@@ -1,0 +1,58 @@
+<div class="row mt-5">
+  <div class="col-md-3 mt-5">
+    <app-profile
+      [userName]="userName"
+      [userEmail]="userEmail"
+      (logoutVar)="logoutEventHandler($event)"
+    >
+    </app-profile>
+  </div>
+  <div class="col-md-8">
+    <button type="button" class="btn btn-primary" routerLink="/addContact">
+      + Add Contact
+    </button>
+    <div
+      class="card mt-5"
+      style="width: 18rem;"
+      *ngFor="let contact of contactList; let i = index"
+    >
+      <img
+        src="{{ contact.contactImage }}"
+        alt="Card image cap"
+        class="img-thumbnail mx-auto d-block"
+        style="max-height: 300px;"
+      />
+
+      <div class="card-body">
+        <p class="card-text">Name: {{ contact.name }}</p>
+
+        <p class="card-text">Address: {{ contact.address }}</p>
+
+        <div *ngFor="let contact of contact.contactNo; let j = index">
+          <p class="card-text m-2">ContactNo {{ j + 1 }}: {{ contact }}</p>
+          <hr />
+        </div>
+
+        <p class="card-text">Date: {{ contact.created_at | date: "medium" }}</p>
+
+        <div class="d-flex justify-content-between">
+          <button
+            type="button"
+            class="btn btn-info"
+            routerLink="/addContact/{{ contact._id }}"
+          >
+            update
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="delete(contact)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>

@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-body">
+    <p class="card-text">User Profile</p>
+    <h5 class="card-title">Name: {{ userName | uppercase }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Email: {{ userEmail }}</h6>
+    <div class="d-flex justify-content-between mt-5">
+      <button type="button" class="btn btn-info btn-sm" (click)="logoutEvent()">
+        Logout
+      </button>
+    </div>
+  </div>
+</div>
